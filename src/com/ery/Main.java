@@ -12,28 +12,6 @@ public class Main {
 
     }
 
-    private static String fillTheStringOfPairs(int aCount, int bCount, int pairCount) {
-        String[] strArray = getStrABArray(aCount, bCount);
-        int shiftCount = aCount * bCount - pairCount;
-        int tempCount = bCount;
-
-
-        while (shiftCount > 0) {
-            if (shiftCount > tempCount) {
-                strArray[aCount + bCount - 1] = "A";
-                strArray[aCount - 1] = "B";
-                aCount--;
-                shiftCount = shiftCount - tempCount;
-            } else {
-                strArray[aCount + shiftCount - 1] = "A";
-                strArray[aCount - 1] = "B";
-                shiftCount = 0;
-            }
-        }
-
-        return Arrays.toString(strArray);
-    }
-
     public static String getABPairs(int arraySize, int pairCount) {
         String pairString = "";
         int aCount = arraySize / 2;
@@ -50,6 +28,27 @@ public class Main {
         return pairString;
     }
 
+
+    private static String fillTheStringOfPairs(int aCount, int bCount, int pairCount) {
+        String[] strArray = getStrABArray(aCount, bCount);
+        int shiftCount = aCount * bCount - pairCount;
+        int tempCount = bCount;
+
+        while (shiftCount > 0) {
+            if (shiftCount > tempCount) {
+                strArray[aCount + bCount - 1] = "A";
+                strArray[aCount - 1] = "B";
+                aCount--;
+                shiftCount = shiftCount - tempCount;
+            } else {
+                strArray[aCount + shiftCount - 1] = "A";
+                strArray[aCount - 1] = "B";
+                shiftCount = 0;
+            }
+        }
+
+        return Arrays.toString(strArray);
+    }
 
     private static String[] getStrABArray(int aCount, int bCount) {
         String[] strArray = new String[aCount + bCount];
